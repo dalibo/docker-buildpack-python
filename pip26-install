@@ -1,0 +1,14 @@
+#!/bin/bash -eu
+#
+# Workaround SNI issue by downloading package using curl and disabling network
+# when using pip. Execute pip check at the end to ensure dependencies.
+#
+# Usage: pip26-install URL [URL ...]
+
+mkdir -p ~/.cache/pip/curl
+for url in "$@" ; do
+	path="$HOME/.cache/pip/curl/${url##*/}"
+	curl -L --output "$path" "$url"
+	pip2.6 install --no-index --no-deps "$path"
+done
+pip2.6 check
