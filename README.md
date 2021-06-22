@@ -6,6 +6,7 @@ Buildpack image for development for Python PostgreSQL tools :
 - python2, pip and flake8
 - python3, pip and flake8
 - ldapsearch and friends
+- poetry
 
 
 ## Tags
