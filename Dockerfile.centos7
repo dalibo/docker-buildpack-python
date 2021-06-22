@@ -4,7 +4,6 @@ RUN set -ex; \
     yum -q -y install \
         cyrus-sasl-md5 \
         openldap-clients \
-        python2 \
         python36 \
     ; \
     yum clean all ; \
