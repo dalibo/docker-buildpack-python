@@ -30,5 +30,12 @@ RUN set -ex; \
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3 - --force --yes --version 1.1.6; \
     sed -i '1s,^.*python$,#!/usr/bin/python3,' /root/.poetry/bin/poetry; \
     ln -s /root/.poetry/bin/poetry /usr/local/bin/poetry; \
+    rm -rf \
+        /root/.poetry/lib/poetry/_vendor/py2.7 \
+        /root/.poetry/lib/poetry/_vendor/py3.5 \
+        /root/.poetry/lib/poetry/_vendor/py3.7 \
+        /root/.poetry/lib/poetry/_vendor/py3.8 \
+        /root/.poetry/lib/poetry/_vendor/py3.9 \
+    ; \
     poetry --version; \
     :
