@@ -1,0 +1,27 @@
+FROM dalibo/buildpack:centos7
+
+RUN set -ex; \
+    yum -q -y install \
+        cyrus-sasl-md5 \
+        openldap-clients \
+        python2 \
+        python36 \
+    ; \
+    yum clean all ; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    echo /usr/local/lib/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
+    echo /usr/local/lib64/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
+    curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2 ; \
+    pip2 --version; \
+    pip2 install flake8; \
+    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3 ; \
+    pip3 --version; \
+    pip3 install flake8; \
+    rm -rf ~/.cache/; \
+    yum clean all ; \
+    :
