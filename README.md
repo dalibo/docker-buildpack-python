@@ -14,3 +14,13 @@ Buildpack image for development for Python PostgreSQL tools :
 - `centos8`.
 - `centos7`.
 - `centos6`.
+
+
+## Python 2.6
+
+CentOS 6 ships Python 2.6 which is quite old. `centos6` images provides most
+updated pip, wheel and setuptools for Python2.6. However, Python 2.6 SSL is
+known to not support SNI extension which is now mandatory for PyPI. A script
+named `pip26-install` allows to workaround this limitation by installing a list
+of URL of packages. See Dockerfile.centos6 for an example usage.
+
