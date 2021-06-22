@@ -11,5 +11,6 @@ Buildpack image for development for Python PostgreSQL tools :
 
 ## Tags
 
+- `centos8`.
 - `centos7`.
 - `centos6`.

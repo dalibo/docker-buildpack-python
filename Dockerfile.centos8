@@ -1,0 +1,38 @@
+FROM dalibo/buildpack:centos8
+
+RUN set -ex; \
+    yum -q -y install \
+        cyrus-sasl-md5 \
+        openldap-clients \
+        python2 \
+        python36 \
+    ; \
+    yum clean all ; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    echo /usr/local/lib/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
+    echo /usr/local/lib64/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
+    pip2 install -I --prefix /usr/local --upgrade pip; \
+    pip3 install -I --prefix /usr/local --upgrade pip; \
+    yum -y remove --noautoremove python2-pip ; \
+    hash -r pip2 ; \
+    pip2 --version; \
+    pip2 install flake8 setuptools; \
+    hash -r pip3 ; \
+    pip3 --version; \
+    pip3 install flake8 setuptools; \
+    rm -rf ~/.cache/; \
+    yum clean all ; \
+    :
+
+# See https://github.com/sdispater/poetry/issues/721
+RUN set -ex; \
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3 - --force --yes --version 1.1.6; \
+    sed -i '1s,^.*python$,#!/usr/bin/python3,' /root/.poetry/bin/poetry; \
+    ln -s /root/.poetry/bin/poetry /usr/local/bin/poetry; \
+    poetry --version; \
+    :
