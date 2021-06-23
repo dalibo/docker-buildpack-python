@@ -6,6 +6,7 @@ RUN set -ex; \
         openldap-clients \
         python2 \
         python36 \
+        python38 \
     ; \
     yum clean all ; \
     :
@@ -24,7 +25,8 @@ RUN set -ex; \
     pip2 install flake8 setuptools; \
     hash -r pip3 ; \
     pip3 --version; \
-    pip3 install flake8 setuptools; \
+    pip3.6 install flake8 setuptools wheel; \
+    pip3.8 install setuptools wheel; \
     rm -rf ~/.cache/; \
     yum clean all ; \
     :

@@ -11,9 +11,9 @@ Buildpack image for development for Python PostgreSQL tools :
 
 ## Tags
 
-- `centos8`.
 - `centos7`.
 - `centos6`.
+- `centos8` with Python 2.7, 3.6 and 3.8.
 - `bullseye`, inludes pyright.
 - `buster`.
 
