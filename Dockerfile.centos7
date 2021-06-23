@@ -5,6 +5,8 @@ RUN set -ex; \
         cyrus-sasl-md5 \
         openldap-clients \
         python36 \
+        libev-devel \
+        libvirt-devel \
     ; \
     yum clean all ; \
     :
