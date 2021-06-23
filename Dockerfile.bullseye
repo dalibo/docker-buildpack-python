@@ -21,6 +21,7 @@ ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
 RUN set -ex; \
     pip3 --no-cache-dir install --upgrade \
+        flake8 \
         pep440deb \
         "virtualenv<20" \
         virtualenv-tools \
