@@ -17,7 +17,6 @@ RUN set -ex; \
     echo /usr/local/lib64/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
     curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2 ; \
     pip2 --version; \
-    pip2 install flake8; \
     curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3 ; \
     pip3 --version; \
     pip3 install flake8; \
