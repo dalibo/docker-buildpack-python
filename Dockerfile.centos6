@@ -14,18 +14,16 @@ RUN set -ex; \
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
+# See https://github.com/pypa/pypi-support/issues/974 and
+# https://gist.github.com/molinav/3b4f623edc5793154a0bdd9a78e739e9
 RUN set -ex; \
     chmod +x /usr/local/bin/pip26-install; \
     echo /usr/local/lib/python2.6/site-packages >> /usr/lib/python2.6/site-packages/local.pth; \
     echo /usr/local/lib64/python2.6/site-packages >> /usr/lib/python2.6/site-packages/local.pth; \
-    yum -q -y install python-pip ; \
-    pip26-install \
-        https://files.pythonhosted.org/packages/c4/44/e6b8056b6c8f2bfd1445cc9990f478930d8e3459e9dbf5b8e2d2922d64d3/pip-9.0.3.tar.gz \
-        https://files.pythonhosted.org/packages/8a/e9/8468cd68b582b06ef554be0b96b59f59779627131aad48f8a5bce4b13450/wheel-0.29.0-py2.py3-none-any.whl \
-        https://files.pythonhosted.org/packages/f2/94/3af39d34be01a24a6e65433d19e107099374224905f1e0cc6bbe1fd22a2f/argparse-1.4.0-py2.py3-none-any.whl \
-        https://files.pythonhosted.org/packages/27/f6/fabfc9c71c9b1b99d2ec4768a6e1f73b2e924f51c89d436302b8c2a25459/setuptools-36.8.0-py2.py3-none-any.whl \
-    ; \
-    pip2 --version; \
+    curl -LSs https://gist.githubusercontent.com/molinav/3b4f623edc5793154a0bdd9a78e739e9/raw/3926f90838f68dd923e396040a4ceaa6535e6083/get-pip-py26.py > get-pip2.6.py ; \
+    ! python2.6 get-pip2.6.py ; \
+    python2.6 get-pip2.6.py ; \
+    pip --version ; \
     rm -rf ~/.cache/; \
     yum clean all ; \
     :
