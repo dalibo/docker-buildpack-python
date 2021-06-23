@@ -1,0 +1,31 @@
+FROM dalibo/buildpack:buster
+
+RUN set -ex; \
+    apt-get update -y; \
+    apt-get install -y --no-install-recommends \
+        python3.5 \
+        python3-pip \
+        python2.7 \
+        python-pip \
+    ; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    pip2 install --upgrade setuptools wheel ; \
+    pip2 install --upgrade \
+        pytest \
+    ; \
+    pip3 install --upgrade setuptools wheel ; \
+    pip3 install --upgrade \
+        flake8 \
+        pep440deb \
+        "virtualenv<20" \
+        virtualenv-tools \
+    ; \
+    rm -rf ~/.cache; \
+    :
