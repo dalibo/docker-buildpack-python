@@ -16,7 +16,7 @@ Buildpack image for development for Python PostgreSQL tools :
 - `centos7` with Python 2.7 and 3.6.
 - `centos6`, with Python 2.6.
 - `bullseye`, inludes pyright.
-- `buster`.
+- `buster` with Python 2.7 and 3.7.
 
 
 ## Python 2.6
