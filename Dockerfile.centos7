@@ -23,7 +23,6 @@ RUN set -ex; \
     pip3 --version; \
     pip3 install flake8; \
     rm -rf ~/.cache/; \
-    yum clean all ; \
     :
 
 # See https://github.com/sdispater/poetry/issues/721
