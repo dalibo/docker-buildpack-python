@@ -6,9 +6,8 @@ RUN set -ex; \
         openldap-clients \
         python2 \
         python36 \
-        python36-virtualenv \
         python38 \
-        python38-virtualenv \
+        python3-virtualenv \
     ; \
     yum clean all ; \
     :
