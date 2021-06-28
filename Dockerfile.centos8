@@ -3,6 +3,7 @@ FROM dalibo/buildpack:centos8
 RUN set -ex; \
     yum -q -y install \
         cyrus-sasl-md5 \
+        gcc \
         openldap-clients \
         python2 \
         python36 \
