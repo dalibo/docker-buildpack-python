@@ -5,6 +5,7 @@ RUN set -ex; \
         cyrus-sasl-md5 \
         openldap-clients \
         python36 \
+        python36-virtualenv \
         libev-devel \
         libvirt-devel \
     ; \
