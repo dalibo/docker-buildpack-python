@@ -6,3 +6,7 @@ alpine centos8 centos7 centos6 bullseye buster stretch:
 	  --tag dalibo/buildpack-python:$@ \
 	  --file Dockerfile.$@ \
 	.
+
+
+push-%:
+	docker push dalibo/buildpack-python:$*
