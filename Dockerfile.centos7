@@ -29,15 +29,7 @@ RUN set -ex; \
 
 # See https://github.com/sdispater/poetry/issues/721
 RUN set -ex; \
-    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3 - --force --yes --version 1.1.11; \
-    sed -i '1s,^.*python$,#!/usr/bin/python3,' /root/.poetry/bin/poetry; \
-    ln -s /root/.poetry/bin/poetry /usr/local/bin/poetry; \
-    rm -rf \
-        /root/.poetry/lib/poetry/_vendor/py2.7 \
-        /root/.poetry/lib/poetry/_vendor/py3.5 \
-        /root/.poetry/lib/poetry/_vendor/py3.7 \
-        /root/.poetry/lib/poetry/_vendor/py3.8 \
-        /root/.poetry/lib/poetry/_vendor/py3.9 \
-    ; \
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/install-poetry.py | python3 - --force --yes --version 1.1.11; \
+    ln -s /root/.local/bin/poetry /usr/local/bin/poetry; \
     poetry --version; \
     :
