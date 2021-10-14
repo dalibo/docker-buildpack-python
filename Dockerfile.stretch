@@ -5,6 +5,7 @@ RUN set -ex; \
     apt-get install -y --no-install-recommends \
         python3.5 \
         python2.7 \
+        python-minimal \
     ; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
