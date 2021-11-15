@@ -3,8 +3,10 @@ FROM dalibo/buildpack:centos7
 RUN set -ex; \
     yum -q -y install \
         cyrus-sasl-md5 \
+        cyrus-sasl-devel \
         gcc \
         openldap-clients \
+        openldap-devel \
         python36 \
         python36-virtualenv \
         libev-devel \
