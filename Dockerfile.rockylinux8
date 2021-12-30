@@ -1,0 +1,33 @@
+FROM dalibo/buildpack:rockylinux8
+
+RUN set -ex; \
+    yum -q -y install \
+        cyrus-sasl-md5 \
+        cyrus-sasl-devel \
+        gcc \
+        openldap-clients \
+        openldap-devel \
+        python2 \
+        python36 \
+        python38 \
+        python3-virtualenv \
+    ; \
+    yum clean all ; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    pip2 install setuptools wheel; \
+    pip3.6 install flake8 setuptools wheel; \
+    pip3.8 install setuptools wheel; \
+    rm -rf ~/.cache/; \
+    :
+
+# See https://github.com/sdispater/poetry/issues/721
+RUN set -ex; \
+    curl -sSL https://install.python-poetry.org | python3 - --force --yes --version 1.1.11; \
+    ln -s /root/.local/bin/poetry /usr/local/bin/poetry; \
+    poetry --version; \
+    :
