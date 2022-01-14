@@ -3,6 +3,7 @@ FROM dalibo/buildpack:bullseye
 RUN set -ex; \
     apt-get update -y; \
     apt-get install -y --no-install-recommends \
+        python2.7 \
         python3-pip \
         npm \
     ; \
@@ -18,6 +19,12 @@ RUN set -ex; \
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7 ; \
+    pip2 --version ; \
+    rm -rf ~/.cache; \
+    :
 
 RUN set -ex; \
     pip3 --no-cache-dir install --upgrade \
