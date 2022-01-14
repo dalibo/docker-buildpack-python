@@ -33,15 +33,12 @@ RUN set -ex; \
         "virtualenv<20" \
         virtualenv-tools \
     ; \
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 - ; \
-    ln -s ~/.poetry/bin/poetry /usr/local/bin/poetry ; \
-    rm -rf \
-        /root/.poetry/lib/poetry/_vendor/py2.7 \
-        /root/.poetry/lib/poetry/_vendor/py3.5 \
-        /root/.poetry/lib/poetry/_vendor/py3.6 \
-        /root/.poetry/lib/poetry/_vendor/py3.7 \
-        /root/.poetry/lib/poetry/_vendor/py3.8 \
-    ; \
-    poetry --version ; \
+    rm -rf ~/.cache; \
+    :
+
+RUN set -ex; \
+    curl -sSL https://install.python-poetry.org | python3 - --force --yes --version 1.1.11; \
+    ln -sv /root/.local/bin/poetry /usr/local/bin/poetry; \
+    poetry --version; \
     rm -rf ~/.cache; \
     :
