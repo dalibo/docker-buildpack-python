@@ -25,7 +25,7 @@ RUN set -ex; \
     echo /usr/local/lib64/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \
     curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2 - --ignore-installed ; \
     pip2 --version; \
-    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3 - --ignore-installed ; \
+    curl -sSL https://bootstrap.pypa.io/pip/3.6/get-pip.py | python3 - --ignore-installed ; \
     pip3 --version; \
     pip3 install flake8; \
     rm -rf ~/.cache/; \
