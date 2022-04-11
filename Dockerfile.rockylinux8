@@ -39,7 +39,7 @@ RUN set -ex; \
 
 # See https://github.com/sdispater/poetry/issues/721
 RUN set -ex; \
-    curl -sSL https://install.python-poetry.org | python3 - --force --yes --version 1.1.11; \
+    curl -sSL https://install.python-poetry.org | python3.8 - --force --yes --version 1.1.13; \
     ln -s /root/.local/bin/poetry /usr/local/bin/poetry; \
     poetry --version; \
     :
