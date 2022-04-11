@@ -8,9 +8,9 @@ RUN set -ex; \
         openldap-clients \
         openldap-devel \
         python2 \
+        python3-virtualenv \
         python36 \
         python38 \
-        python3-virtualenv \
     ; \
     yum clean all ; \
     :
@@ -19,9 +19,21 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
 RUN set -ex; \
-    pip2 install setuptools wheel; \
-    pip3.6 install flake8 setuptools wheel; \
-    pip3.8 install setuptools wheel; \
+    curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2 - --ignore-installed ; \
+    pip2 --version; \
+    rm -rf ~/.cache/; \
+    :
+
+RUN set -ex; \
+    curl -sSL https://bootstrap.pypa.io/pip/3.6/get-pip.py | python3.6 - --ignore-installed ; \
+    pip3.6 --version; \
+    rm -rf ~/.cache/; \
+    :
+
+RUN set -ex; \
+    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3.8 - --ignore-installed ; \
+    pip3.8 --version; \
+    pip3.8 install flake8 setuptools wheel; \
     rm -rf ~/.cache/; \
     :
 
