@@ -1,0 +1,23 @@
+FROM dalibo/buildpack:rockylinux9
+
+RUN set -ex; \
+    yum -q -y install \
+        cyrus-sasl-md5 \
+        cyrus-sasl-devel \
+        gcc \
+        openldap-clients \
+        openldap-devel \
+        python3 \
+    ; \
+    yum clean all ; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3.9 - --ignore-installed ; \
+    pip3.9 --version; \
+    pip3.9 install flake8 setuptools wheel; \
+    rm -rf ~/.cache/; \
+    :
