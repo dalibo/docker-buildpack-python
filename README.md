@@ -6,7 +6,7 @@ Buildpack image for development for Python PostgreSQL tools :
 - python2, pip, setuptools, wheel.
 - python3, pip, setuptools, wheel.
 - flake8, pytest, virtualenv.
-- poetry.
+- poetry, twine.
 - ldapsearch and friends
 
 
