@@ -8,6 +8,7 @@ Buildpack image for development for Python PostgreSQL tools :
 - flake8, pytest, virtualenv.
 - poetry, twine.
 - ldapsearch and friends
+- docker.io
 
 
 ## Tags
