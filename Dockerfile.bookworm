@@ -1,0 +1,25 @@
+FROM dalibo/buildpack:bookworm
+
+RUN set -ex; \
+    apt-get update -y; \
+    apt-get install -y --no-install-recommends \
+        python3-pip \
+        python3-venv \
+    ; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
+    :
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+RUN set -ex; \
+    pip3 --no-cache-dir install --upgrade \
+        flake8 \
+        pep440deb \
+        twine \
+        "virtualenv<20" \
+        virtualenv-tools \
+    ; \
+    rm -rf ~/.cache; \
+    :

@@ -1,6 +1,6 @@
 all:
 
-alpine rockylinux9 rockylinux8 centos7 centos6 bullseye buster stretch:
+alpine rockylinux9 rockylinux8 centos7 centos6 bookworm bullseye buster stretch:
 	docker build \
 	  --build-arg http_proxy \
 	  --tag dalibo/buildpack-python:$@ \
