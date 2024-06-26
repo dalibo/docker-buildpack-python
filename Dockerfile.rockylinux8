@@ -7,10 +7,9 @@ RUN set -ex; \
         gcc \
         openldap-clients \
         openldap-devel \
-        python2 \
         python3-virtualenv \
-        python36 \
-        python38 \
+        python39 \
+        python39-pip \
     ; \
     yum clean all ; \
     :
@@ -18,28 +17,9 @@ RUN set -ex; \
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
-RUN set -ex; \
-    curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2 - --ignore-installed ; \
-    pip2 --version; \
-    rm -rf ~/.cache/; \
-    :
-
-RUN set -ex; \
-    curl -sSL https://bootstrap.pypa.io/pip/3.6/get-pip.py | python3.6 - --ignore-installed ; \
-    pip3.6 --version; \
-    rm -rf ~/.cache/; \
-    :
-
-RUN set -ex; \
-    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3.8 - --ignore-installed ; \
-    pip3.8 --version; \
-    pip3.8 install flake8 setuptools wheel; \
-    rm -rf ~/.cache/; \
-    :
-
 # See https://github.com/sdispater/poetry/issues/721
 RUN set -ex; \
-    curl -sSL https://install.python-poetry.org | python3.8 - --force --yes --version 1.1.13; \
+    curl -sSL https://install.python-poetry.org | python3.9 - --force --yes --version 1.1.13; \
     ln -s /root/.local/bin/poetry /usr/local/bin/poetry; \
     poetry --version; \
     :
