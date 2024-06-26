@@ -8,8 +8,6 @@ RUN set -ex; \
         openldap-clients \
         openldap-devel \
         python3-virtualenv \
-        python39 \
-        python39-pip \
     ; \
     yum clean all ; \
     :
@@ -19,7 +17,7 @@ ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
 # See https://github.com/sdispater/poetry/issues/721
 RUN set -ex; \
-    curl -sSL https://install.python-poetry.org | python3.9 - --force --yes --version 1.1.13; \
+    curl -sSL https://install.python-poetry.org | python3.6 - --force --yes --version 1.1.13; \
     ln -s /root/.local/bin/poetry /usr/local/bin/poetry; \
     poetry --version; \
     :
