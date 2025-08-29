@@ -10,16 +10,15 @@ RUN set -ex; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
     :
 
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV PIP_NO_PYTHON_VERSION_WARNING 1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_PYTHON_VERSION_WARNING=1
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+RUN uv venv /opt/venv
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
 RUN set -ex; \
-    pip3 --no-cache-dir install --upgrade \
-        flake8 \
-        pep440deb \
-        twine \
-        "virtualenv<20" \
-        virtualenv-tools \
-    ; \
-    rm -rf ~/.cache; \
-    :
+    uv pip install flake8 twine "virtualenv<20" virtualenv-tools pep440deb; \
+    uv cache clean
