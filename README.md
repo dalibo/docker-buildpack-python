@@ -13,6 +13,7 @@ Buildpack image for development for Python PostgreSQL tools :
 
 ## Tags
 
+- `rockylinux10` with Python 3.12.
 - `rockylinux9` with Python 3.9.
 - `rockylinux8` with Python 3.6.
 - `centos7` with Python 2.7 and 3.6.
