@@ -18,6 +18,5 @@ Buildpack image for development for Python PostgreSQL tools :
 - `centos7` with Python 2.7 and 3.6.
 - `centos6` with Python 2.6.
 - `bookworm` with Python 3.10.
-- `bullseye` with Python 3.9. Includes pyright.
-- `bullseye-slim` with only Python 3.9 and latest pip.
+- `bullseye` with Python 3.9.
 - `trixie` with Python 3.13.
