@@ -21,5 +21,4 @@ Buildpack image for development for Python PostgreSQL tools :
 - `bullseye` with Python 2.7 and 3.9. Includes pyright.
 - `bullseye-slim` with only Python 3.9 and latest pip.
 - `buster` with Python 2.7 and 3.7.
-- `stretch` with Python 2.7 and 3.5.
 - `trixie` with Python 3.13.
