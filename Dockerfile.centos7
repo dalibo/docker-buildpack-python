@@ -13,8 +13,6 @@ RUN set -ex; \
         python36 \
         python36-devel \
         python36-virtualenv \
-        libev-devel \
-        libvirt-devel \
     ; \
     yum clean all ; \
     :
