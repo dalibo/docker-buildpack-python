@@ -4,8 +4,10 @@ ADD pip26-install /usr/local/bin
 
 RUN set -ex; \
     yum -q -y install \
+        cyrus-sasl-gssapi \
         cyrus-sasl-md5 \
         cyrus-sasl-devel \
+        krb5-workstation \
         openldap-clients \
         openldap-devel \
         python2 \
