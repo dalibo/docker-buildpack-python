@@ -9,10 +9,11 @@ Buildpack image for development for Python PostgreSQL tools :
 
 ## Tags
 
+- `rockylinux10` with Python 3.13.
+- `trixie` with Python 3.13.
+- `bookworm` with Python 3.10.
 - `rockylinux9` with Python 3.9.
+- `bullseye` with Python 3.9.
 - `rockylinux8` with Python 3.6.
 - `centos7` with Python 2.7 and 3.6.
 - `centos6` with Python 2.6.
-- `bookworm` with Python 3.10.
-- `bullseye` with Python 3.9.
-- `trixie` with Python 3.13.
