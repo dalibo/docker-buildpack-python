@@ -3,12 +3,8 @@
 Buildpack image for development for Python PostgreSQL tools :
 
 - based on [dalibo/buildpack](https://github.com/dalibo/docker-buildpack)
-- python2, pip, setuptools, wheel.
-- python3, pip, setuptools, wheel.
-- flake8, pytest, virtualenv.
-- poetry, twine.
-- ldapsearch and friends
-- docker.io
+- Python, uv, pip, setuptools, wheel, twine, virtualenv.
+- OpenLDAP utils and SASL libs.
 
 
 ## Tags
