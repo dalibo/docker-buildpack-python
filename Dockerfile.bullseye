@@ -3,7 +3,6 @@ FROM dalibo/buildpack:bullseye
 RUN set -ex; \
     apt-get update -y; \
     apt-get install -y --no-install-recommends \
-        docker.io \
         python3-pip \
         python3-venv \
     ; \
@@ -14,13 +13,9 @@ RUN set -ex; \
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
-RUN set -ex; \
-    pip3 --no-cache-dir install --upgrade \
-        flake8 \
-        pep440deb \
-        twine \
-        "virtualenv<20" \
-        virtualenv-tools \
-    ; \
-    rm -rf ~/.cache; \
-    :
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV UV_TOOL_DIR=/usr/local/lib/uv/tool
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
+RUN uv tool install twine
+RUN uv tool install pep440deb

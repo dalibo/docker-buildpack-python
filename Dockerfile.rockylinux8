@@ -22,3 +22,9 @@ RUN set -ex; \
     pip3.6 --version; \
     rm -rf ~/.cache/; \
     :
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV UV_TOOL_DIR=/usr/local/lib/uv/tool
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
+RUN uv tool install twine

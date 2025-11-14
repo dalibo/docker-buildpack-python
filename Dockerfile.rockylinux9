@@ -17,9 +17,8 @@ RUN set -ex; \
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_PYTHON_VERSION_WARNING 1
 
-RUN set -ex; \
-    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py | python3.9 - --ignore-installed ; \
-    pip3.9 --version; \
-    pip3.9 install flake8 setuptools wheel; \
-    rm -rf ~/.cache/; \
-    :
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV UV_TOOL_DIR=/usr/local/lib/uv/tool
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
+RUN uv tool install twine
