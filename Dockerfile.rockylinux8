@@ -6,7 +6,8 @@ RUN set -ex; \
         cyrus-sasl-md5 \
         krb5-workstation \
         openldap-clients \
-        python3-virtualenv \
+        python3 \
+        python39-pip \
     ; \
     yum clean all ; \
     :
