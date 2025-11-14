@@ -12,8 +12,8 @@ RUN set -ex; \
     yum clean all ; \
     :
 
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV PIP_NO_PYTHON_VERSION_WARNING 1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_PYTHON_VERSION_WARNING=1
 
 RUN set -ex; \
     echo /usr/local/lib/python2.7/site-packages >> /usr/lib/python2.7/site-packages/local.pth; \

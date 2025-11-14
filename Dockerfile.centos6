@@ -13,8 +13,8 @@ RUN set -ex; \
     yum clean all ; \
     :
 
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV PIP_NO_PYTHON_VERSION_WARNING 1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_PYTHON_VERSION_WARNING=1
 
 # See https://github.com/pypa/pypi-support/issues/974 and
 # https://gist.github.com/molinav/3b4f623edc5793154a0bdd9a78e739e9

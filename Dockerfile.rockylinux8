@@ -11,8 +11,8 @@ RUN set -ex; \
     yum clean all ; \
     :
 
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV PIP_NO_PYTHON_VERSION_WARNING 1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_PYTHON_VERSION_WARNING=1
 
 RUN set -ex; \
     curl -sSL https://bootstrap.pypa.io/pip/3.6/get-pip.py | python3.6 - --ignore-installed ; \
