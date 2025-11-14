@@ -1,7 +1,7 @@
 FROM dalibo/buildpack:rockylinux10
 
 RUN set -ex; \
-    yum -q -y install \
+    yum -q -y --disablerepo='pgdg*' install \
         cyrus-sasl-gssapi \
         cyrus-sasl-md5 \
         cyrus-sasl-devel \
