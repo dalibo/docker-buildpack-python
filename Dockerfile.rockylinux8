@@ -4,11 +4,8 @@ RUN set -ex; \
     yum -q -y --disablerepo='pgdg*' install \
         cyrus-sasl-gssapi \
         cyrus-sasl-md5 \
-        cyrus-sasl-devel \
-        gcc \
         krb5-workstation \
         openldap-clients \
-        openldap-devel \
         python3-virtualenv \
     ; \
     yum clean all ; \

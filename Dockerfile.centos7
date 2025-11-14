@@ -2,16 +2,11 @@ FROM dalibo/buildpack:centos7
 
 RUN set -ex; \
     yum -q -y install \
-        cyrus-sasl-devel \
         cyrus-sasl-gssapi \
         cyrus-sasl-md5 \
-        gcc \
         krb5-workstation \
         openldap-clients \
-        openldap-devel \
-        python-devel \
         python36 \
-        python36-devel \
         python36-virtualenv \
     ; \
     yum clean all ; \
