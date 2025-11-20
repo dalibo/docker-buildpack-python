@@ -15,7 +15,7 @@ RUN set -ex; \
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV PIP_NO_PYTHON_VERSION_WARNING=1
 
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/bin/
 
 ENV UV_TOOL_DIR=/usr/local/lib/uv/tool
 ENV UV_TOOL_BIN_DIR=/usr/local/bin
